@@ -1,7 +1,26 @@
+
 # SECTION 0 – IMPORTS & REGEX
-# (Add all import statements and regex patterns here)
+"""
+Expense Tracker
 
+A command-line program for recording and managing expense entries.
+Stores each expense in a text file and allows searching, listing,
+and computing totals by category or date.
+"""
 
+import re
+from datetime import datetime
+import os
+
+# File to store all expense records
+DATA_FILE = "expenses.txt"
+
+# Date format: dd/mm/yyyy
+DATE_PATTERN = re.compile(r'^(0[1-9]|[12]\d|3[01])/(0[1-9]|1[0-2])/\d{4}$')
+
+# Valid amounts: integers or decimals up to 2 digits
+AMOUNT_PATTERN = re.compile(r'^[0-9]+(\.[0-9]{1,2})?$')
+# ----------------
 
 # SECTION 1 – USER INPUT FUNCTIONS
 # (Add functions to take validated user input: date, amount, text, etc.)
