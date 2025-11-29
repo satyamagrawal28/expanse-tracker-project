@@ -24,7 +24,48 @@ AMOUNT_PATTERN = re.compile(r'^[0-9]+(\.[0-9]{1,2})?$')
 
 # SECTION 1 – USER INPUT FUNCTIONS
 # (Add functions to take validated user input: date, amount, text, etc.)
+# Input validation helpers
+# --------------------------
 
+def ask_date(prompt="Enter date (dd/mm/yyyy): "):
+    """Prompt user for a valid date in dd/mm/yyyy format."""
+    while True:
+        text = input(prompt).strip()
+
+        if DATE_PATTERN.match(text):
+            try:
+                datetime.strptime(text, "%d/%m/%Y")
+                return text
+            except ValueError:
+                print("Invalid date. Try again.")
+        else:
+            print("Use dd/mm/yyyy format.")
+
+
+def ask_amount(prompt="Enter amount: "):
+    """Prompt user for a positive amount (supports two decimals)."""
+    while True:
+        text = input(prompt).strip()
+
+        if AMOUNT_PATTERN.match(text):
+            amt = float(text)
+            if amt > 0:
+                return round(amt, 2)
+            print("Amount must be greater than 0.")
+        else:
+            print("Enter a valid number (e.g., 120 or 120.50).")
+
+
+def ask_text(prompt):
+    """Prompt user for non-empty text."""
+    while True:
+        text = input(prompt).strip()
+        if text:
+            return text
+        print("This field cannot be empty.")
+
+
+# --------------------------
 
 
 # SECTION 2 – FILE HANDLING
