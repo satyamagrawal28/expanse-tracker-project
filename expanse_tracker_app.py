@@ -139,7 +139,45 @@ def next_id(expenses):
 # SECTION 4 – CORE OPERATION 2
 # list_all(), list_by_date(), list_by_category()
 
+# list_by_date()
+def list_by_date(expenses):
+    """Display expenses for a specific date."""
+    date = ask_date("Enter date to search: ")
 
+    filtered_expenses_list = []
+
+    for e in expenses:
+        if e["date"] == date:
+            filtered_expenses_list.append(e)
+
+    if not filtered_expenses_list:
+        print("No expenses found on this date.")
+        return
+
+    else:
+        print("Expenses on the ", date, ": ")
+
+        for f in filtered_expenses_list:
+            print("ID: ", f['id'], " | Amount: ", f['amount'], " | Category: ", f['category'], " | Description: ", f['description'])
+
+# list_by_category()
+def list_by_category(expenses):
+    """Display expenses belonging to a category."""
+    cat = ask_text("Enter category: ").lower()
+    filtered_list = []
+
+    for e in expenses:
+        if e["category"].lower() == cat:
+            filtered_list.append(e)
+
+    if not filtered_list:
+        print("No expenses found for this category.")
+        return
+    else:
+        print("Expenses in this ", cat, ": ")
+
+    for f in filtered_list:
+        print("ID: ", f['id'], " | Date: ", f['date'], " | Amount: ", f['amount'], " | Description: ", f['description'])
 
 # SECTION 5 – CORE OPERATION 3
 # total_amount(), total_by_category()
