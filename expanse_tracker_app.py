@@ -70,6 +70,56 @@ def ask_text(prompt):
 
 # SECTION 2 – FILE HANDLING
 # (Add load and save functions for working with the data file)
+# File operations
+# --------------------------
+
+def load_expenses():
+    """Load all expense records from the file."""
+    expenses = []
+
+    if not os.path.isfile(DATA_FILE):
+        return expenses
+
+    with open(DATA_FILE, "r", encoding="utf-8") as file:
+        for line in file:
+            line = line.strip()
+            if not line:
+                continue
+
+            parts = line.split("|")
+            if len(parts) < 5:
+                continue
+
+            try:
+                expense = {
+                    "id": int(parts[0]),
+                    "date": parts[1],
+                    "amount": float(parts[2]),
+                    "category": parts[3],
+                    "description": "|".join(parts[4:])
+                }
+                expenses.append(expense)
+            except ValueError:
+                continue
+
+    return expenses
+
+
+def save_expenses(expenses):
+    """Write all expense records back to the file."""
+    with open(DATA_FILE, "w", encoding="utf-8") as file:
+        for e in expenses:
+            line = (
+                f"{e['id']}|"
+                f"{e['date']}|"
+                f"{e['amount']:.2f}|"
+                f"{e['category'].replace('|','/')}|"
+                f"{e['description'].replace('|','/')}\n"
+            )
+            file.write(line)
+
+
+# --------------------------
 
 
 
