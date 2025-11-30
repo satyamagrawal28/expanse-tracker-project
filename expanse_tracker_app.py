@@ -132,12 +132,12 @@ def next_id(expenses):
 
 
 # SECTION 3 – CORE OPERATION 1
-# add_expense()
+# add_expense()- pavan kumar
 
 
 
 # SECTION 4 – CORE OPERATION 2
-# list_all(), list_by_date(), list_by_category()
+# list_all(), list_by_date(), list_by_category()- Jyothi basu and akshay raju
 
 # list_by_date()
 def list_by_date(expenses):
@@ -180,7 +180,7 @@ def list_by_category(expenses):
         print("ID: ", f['id'], " | Date: ", f['date'], " | Amount: ", f['amount'], " | Description: ", f['description'])
 
 # SECTION 5 – CORE OPERATION 3
-# total_amount(), total_by_category()
+# total_amount(), total_by_category()- chandan
 
 
 
