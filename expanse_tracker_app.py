@@ -120,7 +120,15 @@ def save_expenses(expenses):
 
 
 # --------------------------
+# Core operations
 
+def next_id(expenses):
+    """Return the next available numeric ID."""
+    if not expenses:
+        return 1
+    return max(e["id"] for e in expenses) + 1
+
+# --------------------------
 
 
 # SECTION 3 – CORE OPERATION 1
@@ -139,7 +147,7 @@ def save_expenses(expenses):
 
 
 # SECTION 6 – CORE OPERATION 4
-# delete_expense(), update_expense()
+    # delete_expense(), update_expense()
 
 
 
