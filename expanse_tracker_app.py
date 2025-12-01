@@ -139,6 +139,28 @@ def next_id(expenses):
 # SECTION 4 – CORE OPERATION 2
 # list_all(), list_by_date(), list_by_category()- Jyothi basu and akshay raju
 
+#List all expenses
+
+def list_all(expenses):
+    """Display all expenses sorted by date and ID."""
+    if not expenses:
+        print("\nNo expenses recorded.")
+        return
+
+    print("\nAll Expenses:")
+
+    sorted_exp = sorted(
+        expenses,
+        key=lambda e: (datetime.strptime(e["date"], "%d/%m/%Y"), e["id"])
+    )
+
+    for e in sorted_exp:
+        print(
+            f"ID: {e['id']} | Date: {e['date']} | Amount: {e['amount']:.2f} | "
+            f"Category: {e['category']} | Description: {e['description']}"
+        )
+
+
 # list_by_date()
 def list_by_date(expenses):
     """Display expenses for a specific date."""
