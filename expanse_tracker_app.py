@@ -71,7 +71,6 @@ def ask_text(prompt):
 # SECTION 2 – FILE HANDLING
 # (Add load and save functions for working with the data file)
 # File operations
-# --------------------------
 
 def load_expenses():
     """Load all expense records from the file."""
@@ -117,6 +116,7 @@ def save_expenses(expenses):
                 f"{e['description'].replace('|','/')}\n"
             )
             file.write(line)
+    file.close()
 
 
 # --------------------------
@@ -184,8 +184,7 @@ def list_by_category(expenses):
 
 
 
-# SECTION 6 – CORE OPERATION 4
-    # delete_expense(), update_expense()
+# SECTION 6 – CORE OPERATION 4    # delete_expense(), update_expense()
 
 
 
