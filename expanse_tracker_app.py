@@ -207,11 +207,73 @@ def list_by_category(expenses):
 
 
 # SECTION 6 – CORE OPERATION 4    # delete_expense(), update_expense()
+def delete_by_id(expenses):
+    """Remove an expense using its ID."""
+    id_text = ask_text("Enter ID to delete: ")
+
+    try:
+        target = int(id_text)
+    except ValueError:
+        print("Invalid ID format.")
+        return
+
+    before = len(expenses)
+    expenses[:] = [e for e in expenses if e["id"] != target]
+
+    if len(expenses) < before:
+        save_expenses(expenses)
+        print("Expense deleted.")
+    else:
+        print("ID not found.")
 
 
 
 # SECTION 7 – MAIN FUNCTION
 # (Add menu, routing to different operations, and program start)
+def main_menu():
+    expenses = load_expenses()
+    print("Welcome to Expense Tracker")
+
+    while True:
+        print("\nMenu:")
+        print("1. Add Expense")
+        print("2. List All")
+        print("3. List by Date")
+        print("4. List by Category")
+        print("5. Total by Category")
+        print("6. Total Amount")
+        print("7. Delete by ID")
+        print("8. Exit")
+
+        choice = input("Choose: ").strip()
+
+        if choice == "1":
+            add_expense(expenses)
+        elif choice == "2":
+            list_all(expenses)
+        elif choice == "3":
+            list_by_date(expenses)
+        elif choice == "4":
+            list_by_category(expenses)
+        elif choice == "5":
+            total_by_category(expenses)
+        elif choice == "6":
+            total_amount(expenses)
+        elif choice == "7":
+            delete_by_id(expenses)
+        elif choice == "8":
+            print("Goodbye.")
+            break
+        else:
+            print("Enter a number between 1 and 8.")
+
+
+# --------------------------
+# Entry point
+# --------------------------
+
+if __name__ == "__main__":
+    main_menu()
 
 
 
