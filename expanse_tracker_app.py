@@ -1,4 +1,3 @@
-
 # SECTION 0 – IMPORTS & REGEX
 """
 Expense Tracker
@@ -133,6 +132,27 @@ def next_id(expenses):
 
 # SECTION 3 – CORE OPERATION 1
 # add_expense()- pavan kumar
+
+def add_expense(expenses):
+    """Create a new expense entry and save it."""
+    print("\nAdd New Expense")
+
+    date = ask_date()
+    amount = ask_amount()
+    category = ask_text("Enter category: ")
+    description = ask_text("Enter description: ")
+
+    new_entry = {
+        "id": next_id(expenses),
+        "date": date,
+        "amount": amount,
+        "category": category,
+        "description": description
+    }
+
+    expenses.append(new_entry)
+    save_expenses(expenses)
+    print("Expense added.")
 
 
 
