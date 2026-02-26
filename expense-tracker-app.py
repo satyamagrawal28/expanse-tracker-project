@@ -115,7 +115,6 @@ def save_expenses(expenses):
                 f"{e['description'].replace('|','/')}\n"
             )
             file.write(line)
-    file.close()
 
 
 # --------------------------
@@ -157,9 +156,9 @@ def add_expense(expenses):
 
 
 # SECTION 4 – CORE OPERATION 2
-# list_all(), list_by_date(), list_by_category()- Jyothi basu and akshay raju
+# list_all(), list_by_date(), list_by_category()
 
-#List all expenses
+#List all expenses - Akshaya Raju
 
 def list_all(expenses):
     """Display all expenses sorted by date and ID."""
@@ -181,7 +180,7 @@ def list_all(expenses):
         )
 
 
-# list_by_date()
+# list_by_date() - Jyothi Basu
 def list_by_date(expenses):
     """Display expenses for a specific date."""
     date = ask_date("Enter date to search: ")
@@ -200,9 +199,9 @@ def list_by_date(expenses):
         print("Expenses on the ", date, ": ")
 
         for f in filtered_expenses_list:
-            print("ID: ", f['id'], " | Amount: ", f['amount'], " | Category: ", f['category'], " | Description: ", f['description'])
+            print(f"ID: {f['id']} | Amount: {f['amount']} | Category: {f['category']} | Description: {f['description']})
 
-# list_by_category()
+# list_by_category() - Jyothi Basu
 def list_by_category(expenses):
     """Display expenses belonging to a category."""
     cat = ask_text("Enter category: ").lower()
@@ -219,7 +218,7 @@ def list_by_category(expenses):
         print("Expenses in this ", cat, ": ")
 
     for f in filtered_list:
-        print("ID: ", f['id'], " | Date: ", f['date'], " | Amount: ", f['amount'], " | Description: ", f['description'])
+        print(f"ID: {f['id']} | Date: {f['date']} | Amount: {f['amount']} | Description: {f['description']})
 
 # SECTION 5 – CORE OPERATION 3
 # total_amount(), total_by_category()- chandan
@@ -245,7 +244,7 @@ def total_amount(expenses):
 
 
 
-# SECTION 6 – CORE OPERATION 4    # delete_expense(), update_expense()
+# SECTION 6 – CORE OPERATION 4    # delete_expense()
 def delete_by_id(expenses):
     """Remove an expense using its ID."""
     id_text = ask_text("Enter ID to delete: ")
