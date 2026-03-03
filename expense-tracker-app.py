@@ -199,7 +199,12 @@ def list_by_date(expenses):
         print("Expenses on the ", date, ": ")
 
         for f in filtered_expenses_list:
-            print(f"ID: {f['id']} | Amount: {f['amount']} | Category: {f['category']} | Description: {f['description']})
+            print(
+                f"ID: {f['id']} | "
+                f"Amount: {f['amount']} | "
+                f"Category: {f['category']} | "
+                f"Description: {f['description']}"
+            )
 
 # list_by_category() - Jyothi Basu
 def list_by_category(expenses):
@@ -218,7 +223,12 @@ def list_by_category(expenses):
         print("Expenses in this ", cat, ": ")
 
     for f in filtered_list:
-        print(f"ID: {f['id']} | Date: {f['date']} | Amount: {f['amount']} | Description: {f['description']})
+        print(
+            f"ID: {f['id']} |"
+            f"Date: {f['date']} |"
+            f"Amount: {f['amount']} |"
+            f"Description: {f['description']}"
+        )
 
 # SECTION 5 – CORE OPERATION 3
 # total_amount(), total_by_category()- chandan
